@@ -7,13 +7,14 @@
 
     <div class="card-body">
       <h6 class="subtitle">@{{userId}}</h6>
-      <p>{{text}}</p>
+      <p v-html="text"></p>
 
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "TwitterCard",
   props: {
@@ -22,15 +23,15 @@ export default {
   computed: {
     imgUrl() {
     if (this.post.mainImage.hasOwnProperty("url")) {
-    return this.post.mainImage.url;
-    }
+      return this.post.mainImage.url;
+      }
 
     // If post doesn't Have images
-    return null;
+      return null;
     },
 
     text() {
-      return this.post.caption;
+      return this.$store.getters.linkify(this.post.caption);
     },
     userId() {
       return this.post.user;

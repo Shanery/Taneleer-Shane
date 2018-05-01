@@ -14,6 +14,8 @@ Vue.use(Vuex)
 
 import { faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
 
+import linkifyStr from 'linkifyjs/string';
+
 const store = new Vuex.Store({
   state: {
     services: {
@@ -25,6 +27,11 @@ const store = new Vuex.Store({
         name: "Instagram",
         logo: faInstagram
       }
+    }
+  },
+  getters: {
+    linkify: (state) => (string) => {
+      return linkifyStr(string);
     }
   }
 })

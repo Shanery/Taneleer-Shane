@@ -35,7 +35,7 @@
         <div class="modal-card-content">
           <!-- Header -->
           <div class="level">
-            <h3 class="title g1">{{ userId }}</h3>
+            <h3 class="title g1">@{{ userId }}</h3>
             
               <a :href="linkToOriginal" class="logo-link">
                 <button class="logo-button"><font-awesome-icon :icon="curServiceLogo" size="3x"></font-awesome-icon></button>
@@ -43,7 +43,7 @@
           </div>
           <hr>
           <!-- Text -->
-          <p class="text">{{ text }}</p>
+          <p class="text" v-html="text"></p>
         </div>
       </modal-card>
     </modal>
@@ -53,13 +53,14 @@
 
 <script>
 
+import linkifyStr from 'linkifyjs/string';
+
 import axios from 'axios'
 import ThumbCard from './ThumbCard/ThumbCard.vue'
 import Modal from './ModalElements/Modal'
 import ModalCard from './ModalElements/ModalCard.vue'
 
 import { faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
-
 import { Stack, StackItem } from 'vue-stack-grid';
 
 export default {
@@ -123,7 +124,7 @@ export default {
       return null;
     },
     text() {
-      if (this.curPost) return this.curPost.caption;
+      if (this.curPost) return linkifyStr(this.curPost.caption);
     },
     userId() {
       if (this.curPost) return this.curPost.user;
@@ -248,6 +249,7 @@ export default {
     img {
       vertical-align: top;
       width: 100%;
+      height:100%;
       object-fit: cover;
     }
   }

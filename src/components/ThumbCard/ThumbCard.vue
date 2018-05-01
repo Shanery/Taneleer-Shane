@@ -111,12 +111,13 @@ export default {
 
       width: 45px;
       height: 45px;
+
+      &:hover {
+        background-color: #f1f1f1;
+        color: #555;
+      }
     }
 
-    .logo-button:hover {
-      background-color: #f1f1f1;
-      color: #555;
-    }
   }
 
   .options.hover {

@@ -19,15 +19,18 @@
         <div v-if="imgUrl" class="modal-card-image">
           <img :src="imgUrl">
         </div>
-        <!-- Text Section -->
+        <!-- Body Section -->
         <div class="modal-card-content">
+          <!-- Header -->
           <div class="level">
             <h3 class="title g1">{{ userId }}</h3>
-            <a :href="linkToOriginal" class="logo-link">
-              <font-awesome-icon :icon="curServiceLogo" size="2x"></font-awesome-icon>
-            </a>
+            
+              <a :href="linkToOriginal" class="logo-link">
+                <button class="logo-button"><font-awesome-icon :icon="curServiceLogo" size="3x"></font-awesome-icon></button>
+              </a> 
           </div>
           <hr>
+          <!-- Text -->
           <p class="text">{{ text }}</p>
         </div>
       </modal-card>
@@ -217,6 +220,24 @@ export default {
 
     overflow-y: auto;
   }
+
+  .logo-button {
+      background-color: #DDD;
+      color: #555;
+      border-radius: 1em;
+      border: none;
+      padding: 0;
+
+      width: 45px;
+      height: 45px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #555;;
+        color: #DDD;
+      }
+    }
+  
 }
 
 

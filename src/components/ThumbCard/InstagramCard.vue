@@ -6,7 +6,7 @@
     </div>
 
     <div class="card-body">
-      <h6 class="subtitle">{{userId}}</h6>
+      <h6 class="subtitle">@{{userId}}</h6>
       <p>{{text}}</p>
 
     </div>

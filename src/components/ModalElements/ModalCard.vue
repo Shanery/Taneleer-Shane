@@ -72,6 +72,8 @@ export default {
   flex-grow: 1;
   height: 100%;
 
+  color: #FFF;
+
   &:hover {
     cursor: pointer;
     background-color: rgba(20,20,20,0.5);

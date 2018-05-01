@@ -88,8 +88,13 @@ export default {
     border-color: transparent;
 
     color: #222;
-    opacity: 100
+    opacity: 1;
+
+    &:hover {
+      color: #EEE;
+    }
   }
+
 
   
 

@@ -14,7 +14,10 @@ Vue.use(Vuex)
 
 import { faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
 
+import * as linkify from 'linkifyjs';
+import plugin from 'linkifyjs/plugins/hashtag';
 import linkifyStr from 'linkifyjs/string';
+plugin(linkify);
 
 const store = new Vuex.Store({
   state: {
@@ -22,16 +25,29 @@ const store = new Vuex.Store({
       "Twitter": {
         name: "Twitter",
         logo: faTwitter,
+        hashtagUrl: 'https://twitter.com/hashtag/'
       },
       "Instagram": {
         name: "Instagram",
-        logo: faInstagram
+        logo: faInstagram,
+        hashtagUrl: 'https://instagram.com/explore/tags/'
       }
     }
   },
   getters: {
-    linkify: (state) => (string) => {
-      return linkifyStr(string);
+    linkifyStr: (state) => (string, service) => {
+      return string.linkify({
+        formatHref: function (href, type) {
+          if (type === 'hashtag') {
+            href = state.services[service].hashtagUrl + href.substring(1);
+
+            if (service == "Twitter") {
+              href = href + "?src=hash";
+            }
+          }
+          return href;
+        }
+      });
     }
   }
 })

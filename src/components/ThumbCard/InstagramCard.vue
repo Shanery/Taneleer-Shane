@@ -7,7 +7,7 @@
 
     <div class="card-body">
       <h6 class="subtitle">@{{userId}}</h6>
-      <p>{{text}}</p>
+      <p v-html="text"></p>
 
     </div>
   </div>
@@ -31,9 +31,9 @@ export default {
 
     text() {
       if (this.post.caption.length > 130) {
-        return this.post.caption.slice(0, 130) + "..." ;
+        return this.$store.getters.linkifyStr(this.post.caption.slice(0, 130) + "...", "Instagram") ;
       }
-      return this.post.caption
+      return this.$store.getters.linkifyStr(this.post.caption,"Instagram");
     },
     userId() {
       return this.post.user;

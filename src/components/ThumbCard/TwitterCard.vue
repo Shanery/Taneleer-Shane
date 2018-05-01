@@ -31,7 +31,7 @@ export default {
     },
 
     text() {
-      return this.$store.getters.linkify(this.post.caption);
+      return this.$store.getters.linkifyStr(this.post.caption, "Twitter");
     },
     userId() {
       return this.post.user;

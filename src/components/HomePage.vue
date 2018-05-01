@@ -53,8 +53,6 @@
 
 <script>
 
-import linkifyStr from 'linkifyjs/string';
-
 import axios from 'axios'
 import ThumbCard from './ThumbCard/ThumbCard.vue'
 import Modal from './ModalElements/Modal'
@@ -124,7 +122,7 @@ export default {
       return null;
     },
     text() {
-      if (this.curPost) return linkifyStr(this.curPost.caption);
+      if (this.curPost) return this.$store.getters.linkifyStr(this.curPost.caption, this.currentService);
     },
     userId() {
       if (this.curPost) return this.curPost.user;
@@ -139,9 +137,6 @@ export default {
       return new Promise((resolve, reject) => {
         var self = this;
         self.fetching = true;
-        
-        console.log(service.name)
-        console.log(service.page)
         
         axios.get("https://taneleer.composedcreative.com/api/v1/feed/a0329f16-9225-11e6-89bb-296a97b9d609/fabb8b71-496e-11e8-afe9-1253691739d7",
           { 

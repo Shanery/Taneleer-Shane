@@ -6,6 +6,10 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+
+Vue.component("font-awesome-icon", FontAwesomeIcon)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

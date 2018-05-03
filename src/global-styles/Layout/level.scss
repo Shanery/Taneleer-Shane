@@ -1,0 +1,21 @@
+div.level {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  * > {
+    margin: 0.5em 0em;
+  }
+
+  &.stretch {
+    align-items: stretch;
+  }
+
+  .g1 {
+    flex-grow: 1;
+  }
+
+  .g2 {
+    flex-grow: 1;
+  }
+}

@@ -147,12 +147,10 @@ export default {
             }
           })
         .then(function(result) {
-          console.log(result);
           let data = result.data.data;
           service.posts.push(...data);
 
           service.page++;
-          console.log(service.page);
           this.populateColumns(data);
         }.bind(this))
         .then(() => new Promise(resolve => {
@@ -213,73 +211,14 @@ export default {
         this.getImages(element);
       }
     }
-
-
-
-    
-
-    
   }
   
 }
 </script>
 
 <style lang="scss">
-.modal-card {
-  display: flex;
-  flex-direction: row;
-  
-  width:860px;
-  max-width: 860px;
 
-  background-color: #FFF;
-  border-radius: 1em;
-  overflow: auto;
-
-  .modal-card-image {
-    flex-grow: 1;
-    width: 50%;
-    max-width: 50%;
-    height: 100%;
-    img {
-      vertical-align: top;
-      width: 100%;
-      height:100%;
-      object-fit: cover;
-    }
-  }
-
-  .modal-card-content {
-    width: 50%;
-    flex-grow: 1;
-
-    background-color: #FFF;
-    padding: 2em;
-
-    text-align: left;
-
-    overflow-y: auto;
-  }
-
-  .logo-button {
-    background-color: #DDD;
-    color: #555;
-    border-radius: 1em;
-    border: none;
-    padding: 0;
-
-    width: 45px;
-    height: 45px;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #555;;
-      color: #DDD;
-    }
-  }
-  
-}
-
+// Tabs #TODO Possibly Create a Component
 .tabs {
   .tab {
     font-size: 18px;
@@ -304,6 +243,7 @@ export default {
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  background: #eeeeef;
 }
 </style>
 

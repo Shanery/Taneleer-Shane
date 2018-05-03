@@ -17,20 +17,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+
 }
 
-div.level {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+@import './global-styles/global.scss';
 
-  .g1 {
-    flex-grow: 1;
-  }
-
-  .g2 {
-    flex-grow: 1;
-  }
-}
 </style>

@@ -18,7 +18,7 @@
   </div>
   
 </template>
-
+  
 <script>
 
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
@@ -53,34 +53,5 @@ export default {
 </script>
 
 <style lang="scss">
-.modal-card-container {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-
-  width:100%;
-  height: 100%;
-}
-
-.modal-card {
-  max-width: 800px;
-}
-
-.bar {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  height: 100%;
-
-  color: #FFF;
-
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(20,20,20,0.5);
-  }
-
-  * {
-    flex-grow: 1;
-  }
-}
+  @import 'ModalCard.scss';
 </style>

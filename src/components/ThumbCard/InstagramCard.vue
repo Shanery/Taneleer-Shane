@@ -6,7 +6,10 @@
     </div>
 
     <div class="card-body">
-      <h6 class="subtitle">@{{userId}}</h6>
+      <div class="level">
+        <h6 class="subtitle g1">@{{userId}}</h6>
+        <small>{{ date }}</small>
+      </div> 
       <p v-html="text"></p>
 
     </div>
@@ -14,6 +17,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   name: "InstagramCard",
   props: {
@@ -35,6 +40,12 @@ export default {
       }
       return this.$store.getters.linkifyStr(this.post.caption,"Instagram");
     },
+    date() {
+      const date = moment(this.post.createdDate.date);
+      return date.format('hh:mm a');
+      // return date.fromNow();
+    },
+
     userId() {
       return this.post.user;
     }

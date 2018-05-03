@@ -1,7 +1,12 @@
 @import './Layout/level.scss';
 
-@import './Elements/titles-text.scss'
+@import './Elements/titles-text.scss';
 
+@import './Forms/input.scss';
 
+@import './Components/navigation.scss';
 
+body {
+    margin: 0;
+}
 

@@ -1,20 +1,34 @@
 <template>
-  <div id="app" @scroll="bottomVisible">
+  <div @scroll="bottomVisible">
     
-    <div id="select-source">
-      <div class="tabs">
-        <button class="tab" v-for="(service, title) in services"
-          :class="{'is-active': title==currentService}"
-          @click="changeService(title)">
-          {{ title }}
-          <font-awesome-icon :icon="service.logo"></font-awesome-icon>
-        </button>
+    
+    <nav class="top-nav">
+      <!-- Tabs -->
+      <div id="select-source">
+        <div class="tabs">
+          <button class="tab" v-for="(service, title) in services"
+            :class="{'is-active': title==currentService}"
+            @click="changeService(title)">
+            {{ title }}
+            <font-awesome-icon :icon="service.logo"></font-awesome-icon>
+          </button>
+        </div>
       </div>
-      
-    </div>
+
+      <!-- Search Bar -->
+      <!-- <div class="input">
+        <input type="text" class="search" :v-model="searchInput">
+        <span class="icon is-left">
+          <font-awesome-icon :icon="searchIcon" size="lg"></font-awesome-icon>
+        </span>
+      </div>
+       -->
+
+    </nav>
+    
     <!-- Feed -->
     <div class="wall">
-      <stack :column-min-width="240" :gutter-width="0" :gutter-height="0" :monitor-images-loaded="true">
+      <stack :column-min-width="280" :gutter-width="0" :gutter-height="0" :monitor-images-loaded="true">
         <stack-item v-for="(post, i) in curPosts" :key="i">
           <!-- Post -->
           <thumb-card :post="post" :index="i" 
@@ -53,12 +67,13 @@
 
 <script>
 
-import axios from 'axios'
-import ThumbCard from './ThumbCard/ThumbCard.vue'
-import Modal from './ModalElements/Modal'
-import ModalCard from './ModalElements/ModalCard.vue'
+import axios from 'axios';
+import ThumbCard from './ThumbCard/ThumbCard.vue';
+import Modal from './ModalElements/Modal';
+import ModalCard from './ModalElements/ModalCard.vue';
 
-import { faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands'
+import { faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands';
+import { faSearch } from '@fortawesome/fontawesome-free-solid';
 import { Stack, StackItem } from 'vue-stack-grid';
 
 export default {
@@ -77,7 +92,9 @@ export default {
       currentService: "Twitter",
 
       currentPost: null,
-      modal: false
+      modal: false,
+
+      searchInput: "" 
     }
   },
   created() {
@@ -130,6 +147,9 @@ export default {
     linkToOriginal() {
       if (this.curPost) return this.curPost.url;
     },
+    searchIcon() {
+      return faSearch;
+    }
   },
 
   methods: {
@@ -143,7 +163,8 @@ export default {
             params: {
               "filter[services]": [service.name],
               "page[number]": service.page,
-              "page[size]": 30
+              "page[size]": 30,
+              "filter[search]": self.searchInput
             }
           })
         .then(function(result) {
@@ -217,6 +238,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+// @import './ModalElements/ModalCard.scss';
 
 // Tabs #TODO Possibly Create a Component
 .tabs {
